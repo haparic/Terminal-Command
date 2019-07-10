@@ -36,7 +36,7 @@ module.exports.ls = () => {
 };
 
 module.exports.touch = () => {
-  fs.writeFile('hello-world.txt', 'Hello to this great world', function (err) {
+  fs.writeFile('hello-world.txt', 'Hello World!', function (err) {
     if (err) throw err;
     console.log('File Created!');
 });
