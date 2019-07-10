@@ -1,0 +1,52 @@
+1. How do you import a module?
+you could refer to the file in the index.js area
+for example
+const example = require('./myExample'); //used to import
+myExample.function();  //Used to execute the code.
+
+2. What JavaScript statement do you use to export a module?
+module.exports = {
+  myFirstMethod: () => {
+    console.log('Success');
+  },
+};
+
+Online Research Questions
+1. Are there other ways to export a module?
+exports.message="Hello World";
+
+2. What are ES6 modules and how do they differ from the module we created in this checkpoint?
+
+
+Code Challenge
+
+Create a Github repository called Terminal Command and add the code from this checkpoint. Implement the touch and mkdir commands to the terminal-commands module:
+
+terminal-commands.js
+const fs = require('fs')
+
+module.exports.ls = () => {
+  fs.readdir('./', (err, files) => {
+    const filesToString = files.reduce((acc, file) => {
+      return `${acc} ${file} `;
+    }, '');
+
+    console.log(filesToString);
+  });
+};
+
+module.exports.touch = () => {
+  fs.writeFile('hello-world.txt', 'Hello to this great world', function (err) {
+    if (err) throw err;
+    console.log('File Created!');
+});
+};
+
+module.exports.mkdir = () => {
+  fs.mkdir('/tmp/test',function(err){
+   if (err) {
+       return console.error(err);
+   }
+   console.log("New Directory created");
+});
+};
