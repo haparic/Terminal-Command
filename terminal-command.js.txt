@@ -16,7 +16,8 @@ Online Research Questions
 exports.message="Hello World";
 
 2. What are ES6 modules and how do they differ from the module we created in this checkpoint?
-
+Es6 is the language verision being used. Node is the program used to creat the modules.
+we implemented a module using the terminal command. ES6 can be used to accomplish a similar thing but through the use of a script.
 
 Code Challenge
 
