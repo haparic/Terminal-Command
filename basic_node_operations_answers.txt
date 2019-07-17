@@ -1,0 +1,43 @@
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+Sort: sorted the list by alphabetical order, it used merge sort to place the data in an array like structure and ouptut as strings 
+WC: this prints the number of lines, words, and characters.
+$ wc commands.js
+40  113 1131 commands.js
+UNIQ: it is used in conjuction with sort. it returns an output of the sorted files without duplicate lines.
+$ sort commands.js | uniq | wc
+     36     112    1120
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+$ sort commands.js | uniq | wc
+     36     112    1120
+It showed 4 fewer lines, 1 fewer word, and 11 fewer characters because it removed any lines that were identical to the adjacent lines.
+6. In this checkpoint, you encountered built-in JavaScript methods as well as the new ES6 syntax. Review the information below before attempting the programming challenge.
+
+
+Reverse String
+
+Given a string, reverse the order of characters in each word within a sentence while maintaining the original word order and whitespace and return the string. To improve your problem-solving experience, use the suggested functions to solve the problem.
+function reverseString(string) {
+  var reversedWords = [];
+  var reversedString = '';
+  var splitArray = string.split(' ');
+  splitArray.forEach(word => {
+    reversedWords.push(reverseWords(word));
+  });
+  reversedString = reversedWords.join(' ');
+  return reversedString;
+}
+
+function reverseWords(word) {
+  var letters = [];
+  var reverseWord = '';
+  for (let i = 0; i < word.length; i++) {
+    letters.push(word[i]);
+  }
+  for (let i = 0; i < word.length; i++) {
+    reverseWord += letters.pop();
+  }
+  return reverseWord;
+}
+
+console.log(reverseString("I'm learning!"));
