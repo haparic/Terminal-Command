@@ -1,0 +1,65 @@
+1. What is the difference between readdirSync and readdir?
+the fs.readdirSync command is  the blocking and synchronous version of the fs.readdir command. the fs.readdir command is asynchronous and non- blocking. 
+2. What is the event loop and how does it handle asynchronous requests?
+
+
+3. Given the following code, specify whether the program is asynchronous and non-blocking or synchronous and blocking or synchronous and non-blocking.
+
+const fs = require('fs');
+const file = fs.readFileSync('foo.txt');
+console.log(file.toString());
+
+This is synchronous and blocking due to the 'sync' part of the command. This forces the script to wait until the command is finished to continue running.
+
+4. Given the following code, specify whether the program is asynchronous and non-blocking or synchronous and blocking or synchronous and non-blocking.
+
+const fs = require('fs');
+fs.readFile('foo.txt', (err, file) => {
+ if (err) throw err;
+ console.log(file.toString());
+});
+console.log("test");
+
+This is asynchronous and non-blocking. The fs.readFile is what dictates what happens. It does not have the added sync function to make it blocking or synchronous
+
+5. In what order will the console.log statements execute in the code below?
+
+const fs = require('fs');
+fs.readFile('foo.txt', (err, file) => {
+ if (err) throw err;
+ console.log("A");
+ console.log("B")
+});
+console.log("C");
+
+the order would be  1 console.log("C"), 2 console.log("A"), 3 console.log("B").
+C would run first because the other two are in a loop and need to be called back. C runs in the meantime then it goes back to the original order under the loop.
+
+6. setTimeout is a JavaScript function which calls a function after a set amount of milliseconds. Given the following code, explain in what sequence the functions will run and why.
+
+function greeting() {
+ setTimeout(() => {
+   console.log("friend");
+ }, 100);
+}
+
+function hello(){
+ console.log("hello");
+}
+
+greeting();
+hello();
+
+Hello would run first because there is a 100ms timeout for friend. The greetiing function would have to wait for timer before executing where hello has no timeout. 
+
+7. Create a function which utilizes a callback. Make sure to add console.log statements to understand when your callback function is called.
+
+
+function callback(call) {
+    console.log("this");
+    console.log("is", "a", "callback");
+}
+function run(a,b,c) {
+    console.log(a + "" + b + "" + c + "");
+}
+callback(run);
