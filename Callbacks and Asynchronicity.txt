@@ -1,7 +1,8 @@
 1. What is the difference between readdirSync and readdir?
 the fs.readdirSync command is  the blocking and synchronous version of the fs.readdir command. the fs.readdir command is asynchronous and non- blocking. 
 2. What is the event loop and how does it handle asynchronous requests?
-
+It is used to manage the node callbacks. It processes callbacks as events, asynchronous events are  run and Node relies on the OS to send a notification whenever the event is ready to  be processed and can be used.
+it continues running other asynchroinous lines and only stops for synchronous events.
 
 3. Given the following code, specify whether the program is asynchronous and non-blocking or synchronous and blocking or synchronous and non-blocking.
 
@@ -54,12 +55,14 @@ Hello would run first because there is a 100ms timeout for friend. The greetiing
 
 7. Create a function which utilizes a callback. Make sure to add console.log statements to understand when your callback function is called.
 
-
 function callback(call) {
-    console.log("this");
-    console.log("is", "a", "callback");
+    console.log("callback started");
+    call('call ', 'is ', 'here');
+    console.log("callback", "is", "done");
 }
 function run(a,b,c) {
-    console.log(a + "" + b + "" + c + "");
+  console.log('run called');
+  console.log(a + "" + b + "" + c + "");
+  console.log('run done');
 }
 callback(run);
